@@ -42,6 +42,12 @@ body {
   color: var(--text-dark);
 }
 
+@media (max-width: @ipad-width) {
+  body.main-nav-open {
+    overflow: hidden;
+  }
+}
+
 h1,
 h2,
 h3,
@@ -82,41 +88,299 @@ textarea {
   }
 }
 
-/* Alert bar */
-.alert-bar {
+/* Announcement bar */
+.announcement-bar {
   background: var(--secondary);
   color: var(--text-dark);
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
   text-align: center;
-  padding: 0.5rem 2.5rem;
+  padding: .65rem 3rem;
   position: relative;
+  min-height: 50px;
 }
 
-.alert-bar__close {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
+.announcement-bar__close {
+  appearance: none;
   border: none;
-  font-size: 1.25rem;
+  border-radius: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  font-weight: 400;
   cursor: pointer;
   line-height: 1;
   padding: 0;
+  margin: 0;
+  background-color: rgba(0, 0, 0, .25);
+  color: #FFF;
+  transition: @transition;
+  svg {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+  }
+  &:hover, &:focus {
+    background-color: rgba(0, 0, 0, .65);
+  }
+  &:focus, &:focus-visible {
+    outline: 2px solid #FFF;
+    outline-offset: -2px;
+  }
 }
 
 /* Site header */
 .site-header {
   background: var(--white);
-  padding: 1rem 0;
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
 }
 
-.site-header__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+.site-primary-navigation {
+  background: var(--primary);
+
+  .main-nav__backdrop {
+    display: none;
+  }
+
+  .main-nav__toggle {
+    display: none;
+  }
+
+  .main-nav__close {
+    display: none;
+  }
+
+  .main-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .main-nav__inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    ul, .main-nav__links {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+
+      .nav-item {
+        display: block;
+        text-decoration: none;
+        appearance: none;
+        border: none;
+        cursor: pointer;
+        color: var(--white);
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
+        transition: @transition;
+        padding: 15px 18px;
+
+        &:hover,
+        &:focus {
+          outline: none;
+        }
+      }
+
+      > li {
+        &:hover,
+        &:focus-within {
+          .nav-item {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+          }
+        }
+
+        &:focus-within .nav-item {
+          outline: 2px solid #fff;
+          outline-offset: -2px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: @ipad-width) {
+    .site-primary-navigation__inner {
+      position: relative;
+      z-index: 1002;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .main-nav__backdrop {
+      display: block;
+
+      &[hidden] {
+        display: none !important;
+      }
+
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      margin: 0;
+      padding: 0;
+      border: none;
+      background: fade(#000, 45%);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      cursor: pointer;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .main-nav__toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .5rem;
+      margin: 0;
+      padding: 0.85rem 0.5rem;
+      border: none;
+      background: transparent;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
+      transition: @transition;
+      &:hover, &:focus {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+      }
+      &:focus,
+      &:focus-visible {
+        outline: 2px solid #fff;
+        outline-offset: -2px;
+      }
+    }
+
+    .main-nav__toggle-icon {
+      font-size: 1.25rem;
+    }
+
+    .main-nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: min(20rem, 88vw);
+      margin: 0;
+      padding: 4.75rem 1.25rem 1.5rem;
+      background: var(--primary);
+      box-shadow: -8px 0 24px fade(#000, 25%);
+      overflow-y: auto;
+      transform: translateX(100%);
+      visibility: hidden;
+      pointer-events: none;
+      transition: transform 0.35s ease, visibility 0.35s ease;
+    }
+
+    .main-nav__close {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 2.75rem;
+      height: 2.75rem;
+      margin: 0;
+      padding: 0;
+      border: none;
+      border-radius: 4px;
+      background: fade(#fff, 15%);
+      color: #fff;
+      cursor: pointer;
+      transition: @transition;
+
+      i {
+        font-size: 1.375rem;
+        line-height: 1;
+      }
+
+      &:hover {
+        background: fade(#fff, 28%);
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:focus-visible {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+        background: fade(#fff, 28%);
+      }
+    }
+
+    .main-nav ul,
+    .main-nav .main-nav__links {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      width: 100%;
+
+      > li {
+        width: 100%;
+        border-top: 1px solid fade(#fff, 25%);
+
+        .nav-item {
+          width: 100%;
+          font-size: 1rem;
+          padding: 0.875rem 0.5rem;
+          text-align: left;
+        }
+      }
+    }
+
+    &.site-primary-navigation--open {
+      .main-nav {
+        transform: translateX(0);
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .main-nav__backdrop {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .main-nav,
+      .main-nav__backdrop {
+        transition: none;
+      }
+    }
+  }
 }
 
 .site-header__logo img {
@@ -158,139 +422,110 @@ textarea {
   fill: currentColor;
 }
 
-/* Main nav */
-.main-nav {
-  background: var(--primary);
-}
-
-.main-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.25rem 2rem;
-}
-
-.main-nav a {
-  display: block;
-  color: var(--white);
-  font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  padding: 0.875rem 0.5rem;
-}
-
-.main-nav a:hover {
-  opacity: 0.85;
-}
-
 /* Hero */
 .hero {
   position: relative;
-  min-height: 520px;
+  min-height: 700px;
   background: var(--primary) url("/assets/img/hero.png") center / cover no-repeat;
   display: flex;
-  align-items: stretch;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    105deg,
-    fade(@primary, 75%) 0%,
-    fade(@primary, 35%) 45%,
-    fade(@primary, 15%) 100%
-  );
-  pointer-events: none;
-}
-
-.hero__inner {
-  position: relative;
-  z-index: 1;
-  width: min(100% - 2rem, var(--max-width));
-  margin-inline: auto;
-  display: grid;
-  grid-template-columns: minmax(260px, 320px) 1fr;
-  gap: 2rem;
-  align-items: center;
-  padding: 2.5rem 0 3rem;
-}
-
-.online-banking {
-  background: var(--white);
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-.online-banking__header {
-  background: var(--online-banking-header);
-  padding: 0.65rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  color: var(--text-dark);
-}
-
-.online-banking__header-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--white);
-  display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  color: var(--primary);
-}
+  align-items: center;
+  overflow: hidden;
+  &:after {
+    content: "";
+    display: block;
+    width: 90%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: linear-gradient(-40deg, var(--primary) 25%, transparent 80%);
+    filter: blur(50px);
+    transform: scale(1.5);
+  }
+  .hero__inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 2.5rem 0 3rem;
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    @media screen and (min-width: @desktop-width) {
+      max-width: 800px;
+      margin: 0 0;
+      justify-content: flex-end;
+      text-align: right;
+      padding-left: 0;
+      padding-right: 80px;
+    }
+  }  
 
-.online-banking__body {
-  padding: 1.25rem 1.25rem 1rem;
-}
+  h2, .hero-heading {
+    margin: 0 0 1rem;
+    font-size: clamp(2rem, 5vw, 65px);
+    font-weight: 500;
+    line-height: 1.15;
+    text-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+  }
 
-.online-banking label {
-  display: block;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  margin-bottom: 0.35rem;
-  color: var(--text-muted);
-}
+  p {
+    margin: 0 0 1.5rem;
+    font-size: clamp(1rem, 3vw, 25px);
+    font-weight: 400;
+    text-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+  }
 
-.online-banking input {
-  width: 100%;
-  border: 1px solid #c8c8c8;
-  border-radius: 2px;
-  padding: 0.5rem 0.65rem;
-  margin-bottom: 0.85rem;
+  .btn {
+    padding: 1rem 2rem;
+    &:hover, &:focus {
+      border-color: #FFF;
+      background-color: #FFF;
+      color: var(--primary);
+    }
+  }
+
+  .hero__content {
+    color: var(--white);
+    padding-left: 1rem;
+  }
+
+  @media screen and (min-width: @desktop-width) {
+    justify-content: flex-end;
+  }
 }
 
 .btn {
+  appearance: none;
   display: inline-block;
-  border: none;
+  border: 2px solid var(--secondary);
+  background-color: var(--secondary);
   cursor: pointer;
-  font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  font-size: 0.8125rem;
-  padding: 0.65rem 1.5rem;
-  border-radius: 2px;
-  transition: filter 0.2s;
-}
-
-.btn:hover {
-  filter: brightness(1.05);
-}
-
-.btn--secondary {
-  background: var(--secondary);
-  color: var(--white);
+  font-size: 18px;
+  font-weight: 600;
+  padding: 0.65rem 2rem;
+  border-radius: 5px;
+  min-width: 110px;
+  transition: @transition;
+  color: #000;
+  &:hover, &:focus {
+    border-color: var(--primary);
+    background-color: var(--primary);
+    box-shadow: 0 3px 8px rgba(0,0,0,.5);
+    color: #FFF;
+    transform: translateY(-2px);
+  }
+  &:focus, &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
 }
 
 .btn--block {
@@ -298,47 +533,186 @@ textarea {
   text-align: center;
 }
 
-.online-banking__enroll {
-  display: block;
-  text-align: center;
-  margin-top: 0.75rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--primary);
-}
-
-.app-badges {
+.mobile-app-badges {
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
   justify-content: center;
-  padding: 0.75rem 1rem 1rem;
-  background: var(--white);
+  max-width: 400px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 15px 20px;
+  a {
+    display: inline-block;
+    position: relative;
+    transition: @transition;
+    background-color: #000;
+    color: #FFF;
+    border-radius: 5px;
+    min-height: 55px;
+    min-width: 175px;
+    overflow: hidden;
+    &:before {
+      content:"";
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 90%;
+    }
+    &.app-badge--apple {
+      &:before {
+        background-image: url("/assets/img/apple-store-white.png");
+      }
+    }
+    &.app-badge--google {
+      &:before {
+        background-image: url("/assets/img/google-play-white.png");
+      }
+    }
+    &:hover, &:focus {
+      transform: translateY(-2px);
+      box-shadow: 0 3px 8px rgba(0,0,0,.5);
+    }
+    &:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+  }
+  &._light-mode a {
+    background-color: #FFF;
+    color: #000;
+    &.app-badge--apple {
+      &:before {
+        background-image: url("/assets/img/apple-store-dark.png");
+      }
+    }
+    &.app-badge--google {
+      &:before {
+        background-image: url("/assets/img/google-play-dark.png");
+      }
+    }
+    &:focus {
+      outline: 2px solid #FFF;
+    }
+  }
 }
 
-.app-badges a img {
-  height: 40px;
-  width: auto;
+.online-banking-container {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 300px;
+  overflow: hidden;
+  z-index: 3;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.5);
+  @media screen and (min-width: @ipad-width) {
+    left: 80px;
+  }
+  .online-banking__inner {
+    background: rgba(255,255,255,.88);
+    padding-bottom: 20px;
+  }
+  .online-banking__header {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 25px 20px;
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--primary);
+    i {
+      font-size: 20px;
+    }
+  }
+  .online-banking__form {
+    padding: 0 20px;
+    ::placeholder {
+      color: #6b6b6b;
+    }
+    label {
+      .sr-only;
+    }
+    input {
+      appearance: none;
+      border-radius: 5px;
+      border: 1px solid #000;
+      background: #FFF;
+      color: #000;
+      width: 100%;
+      height: 35px;
+      text-align: center;
+      transition: @transition;
+      &:focus {
+        border-color: var(--primary);
+        outline: 2px solid var(--primary);
+        outline-offset: 1px;
+      }
+    }
+    [type="submit"],
+    .btn[type="submit"] {
+      width: 100%;
+      text-align: center;
+      .btn;
+      &:hover, &:focus {
+        background-color: var(--primary);
+        color: #FFF;
+      }
+    }
+    .form-field {
+      margin-bottom: 10px;
+    }
+  }
+  .form-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 15px;
+    a {
+      display: inline-block;
+      color: var(--primary);
+      text-decoration: underline;
+      text-underline-offset: 5px;
+      transition: @transition;
+      &:hover {
+        transform: translateY(-2px);
+      }
+      &:focus, &:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+      }
+    }
+  }
+
+  .mobile-app-badges {
+    max-width: 100%;
+    gap: .65rem;
+    margin: 0 0;
+    padding: 20px 20px;
+    background: var(--primary);
+    a {
+      min-height: 42px;
+      min-width: 48%;
+    }
+  }
 }
 
-.hero__content {
-  color: var(--white);
-  padding-left: 1rem;
+.hero .btn,
+.promo .btn,
+.site-footer-col.__message-form [type="submit"] {
+  &:focus, &:focus-visible {
+    outline: 2px solid #FFF;
+  }
 }
 
-.hero__content h1 {
-  margin: 0 0 1rem;
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
-  font-weight: 800;
-  line-height: 1.15;
-  max-width: 14ch;
+.main-content {
+  position: relative;
 }
 
-.hero__content p {
-  margin: 0 0 1.5rem;
-  font-size: 1rem;
-  max-width: 42ch;
-  font-weight: 500;
-}
 
 /* Rates */
 .rates {
@@ -399,6 +773,13 @@ textarea {
   overflow: hidden;
   @media screen and (min-width: @desktop-width) {
     min-height: 600px;
+  }
+  .btn {
+    &:hover, &:focus {
+      border-color: #FFF;
+      background-color: #FFF;
+      color: var(--primary);
+    }
   }
 }
 
@@ -586,6 +967,16 @@ textarea {
   textarea {
     min-height: 80px;
     resize: vertical;
+  }
+  [type="submit"],
+  .btn[type="submit"] {
+    appearance: none;
+    border: none;
+    color: #000;
+    &:hover, &:focus {
+      background-color: #FFF;
+      color: var(--primary);
+    }
   }
 }
 
