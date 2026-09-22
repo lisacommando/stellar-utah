@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stellar Utah Credit Union</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.7.2/css/all.css" integrity="sha384-ekOryaXPbeCpWQNxMwSWVvQ0+1VrStoPJq54shlYhR8HzQgig1v5fas6YgOqLoKz" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/03464ed8bf.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="alert-bar" role="region" aria-label="Announcement">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    <button type="button" class="alert-bar__close" aria-label="Dismiss announcement">&times;</button>
+  </div>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href="/">
+        <img src="/assets/img/logo.svg" alt="Stellar Utah Credit Union" width="280" height="98" />
+      </a>
+      <div class="social-links" aria-label="Social media">
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <span class="sr-only">Visit our LinkedIn Page</span>
+          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <span class="sr-only">Visit our Twitter Page</span>
+          <i class="fa-brands fa-square-x-twitter" aria-hidden="true"></i>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <span class="sr-only">Visit our Facebook Page</span>
+          <i class="fa-brands fa-square-facebook" aria-hidden="true"></i>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <span class="sr-only">Visit our Instagram Page</span>
+          <i class="fa-brands fa-square-instagram" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="main-nav" aria-label="Main">
+    <ul class="container">
+      <li><a href="#">Accounts</a></li>
+      <li><a href="#">Loans</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Resources</a></li>
+      <li><a href="#">About Us</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero__inner">
+      <aside class="online-banking" aria-labelledby="online-banking-title">
+        <div class="online-banking__header">
+          <span id="online-banking-title">Online Banking</span>
+          <span class="online-banking__header-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          </span>
+        </div>
+        <form class="online-banking__body" action="#" method="post">
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" autocomplete="username" />
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" />
+          <button type="submit" class="btn btn--secondary btn--block">Login</button>
+          <a class="online-banking__enroll" href="#">Don't have an account? Enroll</a>
+        </form>
+        <div class="app-badges">
+          <a href="#"><img src="./assets/apple-store-dark.png" alt="Download on the App Store" /></a>
+          <a href="#"><img src="./assets/google-play-dark.png" alt="Get it on Google Play" /></a>
+        </div>
+      </aside>
+
+      <div class="hero__content">
+        <h1 id="hero-heading">Turn Your Dream Vacation Into Reality</h1>
+        <p>Our Personal Travel Loans give you the funds to book today and pay comfortably over time.</p>
+        <a href="#" class="btn btn--secondary">Apply Now!</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="rates" aria-labelledby="rates-heading">
+    <h2 id="rates-heading" class="sr-only">Current loan rates</h2>
+    <div class="container rates__grid">
+      <article class="rate-card">
+        <h2>Auto Loans</h2>
+        <p class="rate-card__label">as low as</p>
+        <p class="rate-card__value">8.75%</p>
+        <p class="rate-card__apr">% APR*</p>
+      </article>
+      <article class="rate-card">
+        <h2>Personal Loans</h2>
+        <p class="rate-card__label">as low as</p>
+        <p class="rate-card__value">6.99%</p>
+        <p class="rate-card__apr">% APR*</p>
+      </article>
+      <article class="rate-card">
+        <h2>Mortgage Loans</h2>
+        <p class="rate-card__label">as low as</p>
+        <p class="rate-card__value">6.875%</p>
+        <p class="rate-card__apr">% APR*</p>
+      </article>
+      <article class="rate-card">
+        <h2>Credit Cards</h2>
+        <p class="rate-card__label">as low as</p>
+        <p class="rate-card__value">12.99%</p>
+        <p class="rate-card__apr">% APR*</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="promo" aria-labelledby="promo-heading">
+    <div class="promo__parallax" aria-hidden="true">
+      <img src="/assets/img/promo.jpg" alt="" width="1920" height="1080" role="presentation" />
+    </div>
+    <div class="promo__inner container-padding">
+      <div class="promo__content">
+        <h2 id="promo-heading">Experience the Credit Union Difference</h2>
+        <p>
+          As a member-owner, you'll enjoy better rates, lower fees, and personalized service from people who truly care about your financial well-being. Join a community that puts you first.
+        </p>
+        <a href="#" class="btn btn--secondary">Become a Member Today</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="site-footer__main container-padding">
+      <div class="site-footer__grid">
+        <div class="site-footer-col __contact">
+          <h3>Contact Us</h3>
+          <address>
+            1234 Main Street<br />
+            Salt Lake City, UT 84101<br />
+            Phone: (801) 555-0100<br />
+            Email: info@stellarutah.org
+          </address>
+          <p>
+            <strong>Routing Number:</strong> 123456789
+          </p>
+          <div class="social-links">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <span class="sr-only">Visit our LinkedIn Page</span>
+              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <span class="sr-only">Visit our Twitter Page</span>
+              <i class="fa-brands fa-square-x-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <span class="sr-only">Visit our Facebook Page</span>
+              <i class="fa-brands fa-square-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <span class="sr-only">Visit our Instagram Page</span>
+              <i class="fa-brands fa-square-instagram" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+        <div class="site-footer-col __quick-links">
+          <h3>Quick Links</h3>
+          <ul class="quick-links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Calculators</a></li>
+          </ul>
+        </div>
+        <div class="site-footer-col __message-form">
+          <h3>Message Us</h3>
+          <form class="contact-form" action="#" method="post">
+            <label for="footer-email">Email (required)</label>
+            <input id="footer-email" name="email" type="email" required />
+            <label for="footer-message">Message (required)</label>
+            <textarea id="footer-message" name="message" required></textarea>
+            <button type="submit" class="btn btn--secondary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="site-footer__bottom container-padding">
+      <div class="site-footer__bottom-inner">
+        <div class="site-footer__legal">
+          <nav aria-label="Footer">
+            <ul class="footer-nav">
+              <li><a href="#">Homepage Types</a></li>
+              <li><a href="#">Calculators</a></li>
+            </ul>
+          </nav>
+          <p>
+            *APR = Annual percentage rate. Rate based on creditworthiness and term of loan. <br>
+            **APY = Annual percentage yield. Rates are subject to change at any time and are not guaranteed.
+          </p>
+          <p>
+            We provide links to third party partners, independent from Stellar Website Designs. These links are provided only as a convenience. We do not manage the content of those sites. The privacy and security policies of external websites will differ from those of Stellar Website Designs.
+          </p>
+        </div>
+        <div class="site-footer__partners">
+          <a href="https://www.hud.gov/" target="_blank" rel="noopener noreferrer" aria-label="Go to Equal Housing Lender website">
+            <img src="/assets/img/ehl-blk.svg" alt="" width="64" height="64" />
+          </a>
+          <a href="https://ncua.gov/" target="_blank" rel="noopener noreferrer" aria-label="Go to NCUA website">
+            <img src="/assets/img/ncua-blk.svg" alt="" width="120" height="64" />
+          </a>
+        </div>
+      </div>
+      <p class="site-footer__powered">
+        <a href="https://www.omnicommander.com/" target="_blank" rel="noopener noreferrer">
+          <span class="sr-only">Powered by: OMNICOMMANDER</span>
+          <img src="/assets/img/omnicommander.svg" alt="Omnicommander Logo"  />
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/custom.js" defer></script>
+</body>
+</html>
