@@ -91,10 +91,78 @@ function initMainNavToggle() {
   setMenuOpen(false);
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initMainNavToggle);
-} else {
+function initSocialLinksPlacement() {
+  const socialLinks = document.querySelector(".site-header .social-links");
+  const headerSlot = document.querySelector(".site-header__social");
+  const mobileSlot = document.querySelector(".mobile-social-links");
+  if (!socialLinks || !headerSlot || !mobileSlot) return;
+
+  const mobileQuery = window.matchMedia("(max-width: 768px)");
+
+  function placeSocialLinks() {
+    if (mobileQuery.matches) {
+      mobileSlot.appendChild(socialLinks);
+    } else {
+      headerSlot.appendChild(socialLinks);
+    }
+  }
+
+  mobileQuery.addEventListener("change", placeSocialLinks);
+  placeSocialLinks();
+}
+
+function initMobileOnlineBankingToggle() {
+  const container = document.querySelector(".online-banking-container");
+  const toggle = document.querySelector(".mobile-online-banking__toggle");
+  const content = document.getElementById("online-banking-content");
+  if (!container || !toggle || !content) return;
+
+  const mobileQuery = window.matchMedia("(max-width: 1250px)");
+
+  function isOpen() {
+    return container.classList.contains("online-banking-container--open");
+  }
+
+  function setOnlineBankingOpen(open) {
+    if (!mobileQuery.matches) {
+      container.classList.remove("online-banking-container--open");
+      toggle.setAttribute("aria-expanded", "false");
+      content.removeAttribute("aria-hidden");
+      return;
+    }
+
+    container.classList.toggle("online-banking-container--open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    content.setAttribute("aria-hidden", open ? "false" : "true");
+  }
+
+  toggle.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    if (!mobileQuery.matches) {
+      return;
+    }
+
+    setOnlineBankingOpen(!isOpen());
+  });
+
+  mobileQuery.addEventListener("change", function () {
+    setOnlineBankingOpen(false);
+  });
+
+  setOnlineBankingOpen(false);
+}
+
+function initSiteScripts() {
   initMainNavToggle();
+  initSocialLinksPlacement();
+  initMobileOnlineBankingToggle();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initSiteScripts);
+} else {
+  initSiteScripts();
 }
 
 (function initPromoParallax() {

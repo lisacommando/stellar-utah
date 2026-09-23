@@ -25,43 +25,40 @@
       <a class="site-header__logo" href="/">
         <img src="/assets/img/logo.svg" alt="Stellar Utah Credit Union" width="280" height="98" />
       </a>
-      <div class="social-links" aria-label="Social media">
-        <a href="#" target="_blank" rel="noopener noreferrer">
-          <span class="sr-only">Visit our LinkedIn Page</span>
-          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
-        </a>
-        <a href="#" target="_blank" rel="noopener noreferrer">
-          <span class="sr-only">Visit our Twitter Page</span>
-          <i class="fa-brands fa-square-x-twitter" aria-hidden="true"></i>
-        </a>
-        <a href="#" target="_blank" rel="noopener noreferrer">
-          <span class="sr-only">Visit our Facebook Page</span>
-          <i class="fa-brands fa-square-facebook" aria-hidden="true"></i>
-        </a>
-        <a href="#" target="_blank" rel="noopener noreferrer">
-          <span class="sr-only">Visit our Instagram Page</span>
-          <i class="fa-brands fa-square-instagram" aria-hidden="true"></i>
-        </a>
+      <div class="site-header__social">
+        <div class="social-links" aria-label="Social media">
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <span class="sr-only">Visit our LinkedIn Page</span>
+            <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <span class="sr-only">Visit our Twitter Page</span>
+            <i class="fa-brands fa-square-x-twitter" aria-hidden="true"></i>
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <span class="sr-only">Visit our Facebook Page</span>
+            <i class="fa-brands fa-square-facebook" aria-hidden="true"></i>
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <span class="sr-only">Visit our Instagram Page</span>
+            <i class="fa-brands fa-square-instagram" aria-hidden="true"></i>
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="site-primary-navigation">
+
       <button
         type="button"
-        class="main-nav__backdrop"
-        aria-label="Close menu"
-        tabindex="-1"
-        hidden
-      ></button>
+        class="main-nav__toggle"
+        aria-expanded="false"
+        aria-controls="main-nav-menu"
+      >
+        <span class="main-nav__toggle-label">Menu</span>
+        <i class="fa-solid fa-bars main-nav__toggle-icon" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="site-primary-navigation">
+      <div class="main-nav__backdrop" aria-hidden="true"></div>
       <div class="site-primary-navigation__inner container-padding">
-        <button
-          type="button"
-          class="main-nav__toggle"
-          aria-expanded="false"
-          aria-controls="main-nav-menu"
-        >
-          <span class="main-nav__toggle-label">Menu</span>
-          <i class="fa-solid fa-bars main-nav__toggle-icon" aria-hidden="true"></i>
-        </button>
         <nav id="main-nav-menu" class="main-nav" aria-label="Main" aria-hidden="true">
           <button type="button" class="main-nav__close">
             <span class="sr-only">Close main navigation</span>
@@ -76,53 +73,71 @@
               <li><a href="#" class="nav-item">About Us</a></li>
             </ul>
           </div>
+          <div class="mobile-social-links" aria-label="Social media"></div>
+          <div class="main-nav__mobile-app-badges"></div>
         </nav>
       </div>
     </div>
   </header>
 
   <main class="main-content">
-    <div class="online-banking-container" aria-labelledby="online-banking-title">
-      <div class="online-banking__inner">
-        <div class="online-banking__header">
-          <span class="online-banking__header-icon" aria-hidden="true">
-            <i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>
-          </span> 
-          <span id="online-banking-title">Online Banking</span>
-        </div>
-        <div class="online-banking__form">
-          <form action="#" method="post">
-            <div class="form-field">
-              <label for="username">Username</label>
-              <input id="username" name="username" type="text" autocomplete="username" placeholder="Username" />
-            </div>
 
-            <div class="form-field">
-              <label for="password">Password</label>
-              <input id="password" name="password" type="password" autocomplete="new-password" placeholder="Password" />
+    <!-- Start Online Banking -->
+    <div class="online-banking-container" aria-labelledby="online-banking-title">
+      <button
+        type="button"
+        class="mobile-online-banking__toggle"
+        aria-expanded="false"
+        aria-controls="online-banking-content"
+      >
+        <span class="mobile-online-banking__toggle-text">Online Banking</span>
+        <i class="fa-solid fa-chevron-down mobile-online-banking__toggle-icon" aria-hidden="true"></i>
+      </button>
+      <div id="online-banking-content" class="online-banking-content" aria-hidden="true">
+        <div class="online-banking__inner">
+          <div class="inner-wrap">
+            <div class="online-banking__header">
+              <span class="online-banking__header-icon" aria-hidden="true">
+                <i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>
+              </span> 
+              <span id="online-banking-title">Online Banking</span>
             </div>
-            <div class="form-button">
-              <button type="submit" class="btn btn--secondary">Login</button>
+            <div class="online-banking__form">
+              <form action="#" method="post">
+                <div class="form-field">
+                  <label for="username">Username</label>
+                  <input id="username" name="username" type="text" autocomplete="username" placeholder="Username" />
+                </div>
+
+                <div class="form-field">
+                  <label for="password">Password</label>
+                  <input id="password" name="password" type="password" autocomplete="new-password" placeholder="Password" />
+                </div>
+                <div class="form-button">
+                  <button type="submit" class="btn btn--secondary">Login</button>
+                </div>
+              </form>
+              <div class="form-links">
+                <a class="online-banking__enroll" href="#">Enroll</a>
+                <a class="online-banking__forgot-password" href="#">Forgot Password?</a>
+              </div>
             </div>
-          </form>
-          <div class="form-links">
-            <a class="online-banking__enroll" href="#">Enroll</a>
-            <a class="online-banking__forgot-password" href="#">Forgot Password?</a>
+          </div>
+        </div>
+
+        <div class="mobile-app-badges _light-mode">
+          <div class="mobile-app-badges-inner">
+            <a href="#" class="app-badge app-badge--apple">
+              <span class="sr-only">Download on the App Store</span>
+            </a>
+            <a href="#" class="app-badge app-badge--google">
+              <span class="sr-only">Get it on Google Play</span>
+            </a>
           </div>
         </div>
       </div>
-
-      <div class="mobile-app-badges _light-mode">
-        <a href="#" class="app-badge app-badge--apple">
-          <span class="sr-only">Download on the App Store</span>
-          <!-- <img src="./assets/img/apple-store-dark.png" alt="Download on the App Store" /> -->
-        </a>
-        <a href="#" class="app-badge app-badge--google">
-          <span class="sr-only">Get it on Google Play</span>
-          <!-- <img src="./assets/img/google-play-dark.png" alt="Get it on Google Play" /> -->
-        </a>
-      </div>
     </div>
+    <!-- End Online Banking -->
 
     <section class="hero" aria-labelledby="hero-heading">
       <div class="hero__inner">
@@ -136,30 +151,62 @@
 
     <section class="rates" aria-labelledby="rates-heading">
       <h2 id="rates-heading" class="sr-only">Current loan rates</h2>
-      <div class="container rates__grid">
+      <div class="rates__grid">
         <article class="rate-card">
-          <h2>Auto Loans</h2>
-          <p class="rate-card__label">as low as</p>
-          <p class="rate-card__value">8.75%</p>
-          <p class="rate-card__apr">% APR*</p>
+          <a href="#" class="rate-card__link">
+            <h2>Auto Loans</h2>
+            <p class="rate-card__label">as low as</p>
+            <span class="rate-card__value-wrapper">
+              <span class="rate-card__value">8.75</span>
+              <span class="rate-card__value-suffix">
+                <i class="fa-light fa-percent" aria-hidden="true"></i>
+                <span class="sr-only">%</span>
+                <span class="suffix">APR*</span>
+              </span>
+            </span>
+          </a>
         </article>
         <article class="rate-card">
-          <h2>Personal Loans</h2>
-          <p class="rate-card__label">as low as</p>
-          <p class="rate-card__value">6.99%</p>
-          <p class="rate-card__apr">% APR*</p>
+          <a href="#" class="rate-card__link">
+            <h2>Personal Loans</h2>
+            <p class="rate-card__label">as low as</p>
+            <span class="rate-card__value-wrapper">
+              <span class="rate-card__value">4.80</span>
+              <span class="rate-card__value-suffix">
+                <i class="fa-light fa-percent" aria-hidden="true"></i>
+                <span class="sr-only">%</span>
+                <span class="suffix">APR*</span>
+              </span>
+            </span>
+          </a>
         </article>
         <article class="rate-card">
-          <h2>Mortgage Loans</h2>
-          <p class="rate-card__label">as low as</p>
-          <p class="rate-card__value">6.875%</p>
-          <p class="rate-card__apr">% APR*</p>
+          <a href="#" class="rate-card__link">
+            <h2>Mortgage Loans</h2>
+            <p class="rate-card__label">as low as</p>
+            <span class="rate-card__value-wrapper">
+              <span class="rate-card__value">5.75</span>
+              <span class="rate-card__value-suffix">
+                <i class="fa-light fa-percent" aria-hidden="true"></i>
+                <span class="sr-only">%</span>
+                <span class="suffix">APR*</span>
+              </span>
+            </span>
+          </a>
         </article>
         <article class="rate-card">
-          <h2>Credit Cards</h2>
-          <p class="rate-card__label">as low as</p>
-          <p class="rate-card__value">12.99%</p>
-          <p class="rate-card__apr">% APR*</p>
+          <a href="#" class="rate-card__link">
+            <h2>Credit Cards</h2>
+            <p class="rate-card__label">as low as</p>
+            <span class="rate-card__value-wrapper">
+              <span class="rate-card__value">9.99</span>
+              <span class="rate-card__value-suffix">
+                <i class="fa-light fa-percent" aria-hidden="true"></i>
+                <span class="sr-only">%</span>
+                <span class="suffix">APR*</span>
+              </span>
+            </span>
+          </a>
         </article>
       </div>
     </section>
