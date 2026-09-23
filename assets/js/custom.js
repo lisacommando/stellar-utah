@@ -2,6 +2,116 @@ document.querySelector(".announcement-bar__close")?.addEventListener("click", fu
   this.closest(".announcement-bar")?.remove();
 });
 
+let closeAllNavFolders = function () {};
+
+function initNavFolderToggle() {
+  const folderToggles = document.querySelectorAll(".nav-folder-toggle");
+  if (!folderToggles.length) {
+    return;
+  }
+
+  const mobileQuery = window.matchMedia("(max-width: 768px)");
+
+  function setFolderOpen(toggle, open) {
+    const folderItem = toggle.closest(".nav-item-has-folder");
+    const folderId = toggle.getAttribute("aria-controls");
+    const folder = folderId ? document.getElementById(folderId) : null;
+
+    if (!folderItem || !folder) {
+      return;
+    }
+
+    folderItem.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    folder.setAttribute("aria-hidden", open ? "false" : "true");
+  }
+
+  closeAllNavFolders = function () {
+    folderToggles.forEach(function (toggle) {
+      setFolderOpen(toggle, false);
+    });
+  };
+
+  folderToggles.forEach(function (toggle) {
+    const folderItem = toggle.closest(".nav-item-has-folder");
+    let openedByPointer = false;
+
+    function openFolderForFocus() {
+      closeAllNavFolders();
+      setFolderOpen(toggle, true);
+    }
+
+    toggle.addEventListener("pointerdown", function () {
+      openedByPointer = true;
+    });
+
+    toggle.addEventListener("focus", function () {
+      if (openedByPointer) {
+        return;
+      }
+
+      openFolderForFocus();
+    });
+
+    if (folderItem) {
+      folderItem.addEventListener("focusin", function () {
+        if (openedByPointer) {
+          return;
+        }
+
+        openFolderForFocus();
+      });
+
+      folderItem.addEventListener("focusout", function (event) {
+        const nextFocus = event.relatedTarget;
+
+        if (nextFocus && folderItem.contains(nextFocus)) {
+          return;
+        }
+
+        setFolderOpen(toggle, false);
+      });
+
+      folderItem.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          setFolderOpen(toggle, false);
+          toggle.focus();
+        }
+      });
+    }
+
+    toggle.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      openedByPointer = false;
+
+      const isOpen = toggle.getAttribute("aria-expanded") === "true";
+
+      if (isOpen) {
+        setFolderOpen(toggle, false);
+        return;
+      }
+
+      closeAllNavFolders();
+      setFolderOpen(toggle, true);
+    });
+  });
+
+  document.addEventListener("click", function (event) {
+    if (event.target.closest(".nav-item-has-folder")) {
+      return;
+    }
+
+    closeAllNavFolders();
+  });
+
+  mobileQuery.addEventListener("change", function () {
+    closeAllNavFolders();
+  });
+
+  closeAllNavFolders();
+}
+
 function initMainNavToggle() {
   const navigation = document.querySelector(".site-primary-navigation");
   const toggle = document.querySelector(".main-nav__toggle");
@@ -51,6 +161,10 @@ function initMainNavToggle() {
 
     if (open && mobileQuery.matches) {
       closeButton?.focus();
+    }
+
+    if (!open) {
+      closeAllNavFolders();
     }
   }
 
@@ -154,6 +268,7 @@ function initMobileOnlineBankingToggle() {
 }
 
 function initSiteScripts() {
+  initNavFolderToggle();
   initMainNavToggle();
   initSocialLinksPlacement();
   initMobileOnlineBankingToggle();

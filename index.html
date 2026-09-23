@@ -68,11 +68,21 @@
           </button>
           <div class="main-nav__inner">
             <ul class="main-nav__links">
-              <li><a href="#" class="nav-item">Accounts</a></li>
-              <li><a href="#" class="nav-item">Loans</a></li>
-              <li><a href="#" class="nav-item">Services</a></li>
-              <li><a href="#" class="nav-item">Resources</a></li>
-              <li><a href="#" class="nav-item">About Us</a></li>
+              <li class="nav-item nav-item-has-folder">
+                <button type="button" class="nav-item-link nav-folder-toggle" aria-expanded="false" aria-controls="sub-nav-folder__accounts" aria-haspopup="true">Accounts</button>
+                <div class="sub-nav-folder" id="sub-nav-folder__accounts" aria-hidden="true">
+                  <ul class="sub-nav">
+                    <li><a href="#" class="sub-nav-item">Checking</a></li>
+                    <li><a href="#" class="sub-nav-item">Savings</a></li>
+                    <li><a href="#" class="sub-nav-item">Certificates</a></li>
+                    <li><a href="#" class="sub-nav-item">Money Market</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item"><a href="#" class="nav-item-link">Loans</a></li>
+              <li class="nav-item"><a href="#" class="nav-item-link">Services</a></li>
+              <li class="nav-item"><a href="#" class="nav-item-link">Resources</a></li>
+              <li class="nav-item"><a href="#" class="nav-item-link">About Us</a></li>
             </ul>
           </div>
           <div class="mobile-social-links" aria-label="Social media"></div>
